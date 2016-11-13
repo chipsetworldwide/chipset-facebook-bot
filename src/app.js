@@ -219,7 +219,9 @@ app.post('/webhook/', (req, res) => {
                     messaging_events.forEach((event) => {
                         if (event.message && !event.message.is_echo ||
                             event.postback && event.postback.payload) {
-                            processEvent(event);
+                            //processEvent(event);
+                            let text = event.message.text
+                            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
                         }
                     });
                 }
